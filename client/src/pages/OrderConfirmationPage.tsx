@@ -41,7 +41,7 @@ const OrderConfirmationPage = () => {
       <div className="relative h-40">
         <div className="absolute -bottom-10 left-0">
           <img
-            src="src/assets/favicon.png"
+            src="/assets/favicon.png"
             alt="Fruit Emoji"
             className="w-40 h-40 animate-bounce "
           />
