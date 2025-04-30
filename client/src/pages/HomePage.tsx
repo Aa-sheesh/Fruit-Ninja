@@ -41,7 +41,7 @@ const HomePage = () => {
             <div className="relative">
               <div className="w-40 h-40 md:w-60 md:h-60 rounded-full flex items-center justify-center shadow-lg drop-shadow-lg sm:hidden md:block"> 
                 <img
-                  src="src/assets/heroImg.png"
+                  src="public/assets/heroImg.png"
                   alt="Fruit Bowl"
                   className="w-full h-full object-cover md:rounded-lg"
                 />
