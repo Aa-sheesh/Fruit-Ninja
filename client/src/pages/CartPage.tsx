@@ -35,7 +35,7 @@ const CartPage = () => {
 
     // Send POST request to create an order in the backend
     axios
-      .post("http://localhost:5000/api/orders", orderData)
+      .post("https://fruit-ninja-7tju.onrender.com", orderData)
       .then((response) => {
         toast.success("Order placed successfully!");
         clearCart(); // Clear the cart after the order is placed
