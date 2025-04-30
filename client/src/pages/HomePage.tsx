@@ -10,7 +10,7 @@ const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    axios.get("https://fruit-ninja-7tju.onrender.com/menu")
+    axios.get("https://fruit-ninja-7tju.onrender.com/api/menu")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Failed to fetch products", err));
   }, []);
@@ -39,9 +39,9 @@ const HomePage = () => {
           </div>
           <div className="md:w-1/2 flex justify-center">
             <div className="relative">
-              <div className="w-40 h-40 md:w-60 md:h-60 rounded-full flex items-center justify-center shadow-lg drop-shadow-lg sm:hidden md:block"> 
+              <div className="w-40 h-40 md:w-60 md:h-60 rounded-full flex items-center justify-center shadow-lg drop-shadow-lg sm:hidden md:block">
                 <img
-                  src="public/assets/heroImg.png"
+                  src="/assets/heroImg.png" // Corrected path
                   alt="Fruit Bowl"
                   className="w-full h-full object-cover md:rounded-lg"
                 />
