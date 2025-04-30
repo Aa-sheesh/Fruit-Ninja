@@ -14,7 +14,7 @@ const CartPage = () => {
   const mobileNumber = localStorage.getItem("fruitNinjaUserMobile");
   const userName = localStorage.getItem("fruitNinjaUserName") || "Guest";
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     // Check if mobile number exists
     if (!mobileNumber) {
       toast.error("Please log in to place an order.");
@@ -25,7 +25,7 @@ const CartPage = () => {
     const orderData = {
       name: userName,
       phone: mobileNumber,
-      items: cartItems.map(item => ({
+      items: cartItems.map((item) => ({
         name: item.name,
         price: item.price,
         quantity: item.quantity,
@@ -34,7 +34,7 @@ const CartPage = () => {
     };
 
     // Send POST request to create an order in the backend
-    axios
+    await axios
       .post("https://fruit-ninja-7tju.onrender.com/api/orders", orderData)
       .then((response) => {
         toast.success("Order placed successfully!");
@@ -82,7 +82,9 @@ const CartPage = () => {
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
                 <div key={item._id} className="flex justify-between">
-                  <span>{item.name} x{item.quantity}</span>
+                  <span>
+                    {item.name} x{item.quantity}
+                  </span>
                   <span>{item.price * item.quantity} rs</span>
                 </div>
               ))}
