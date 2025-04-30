@@ -11,7 +11,7 @@ import orderRoutes from './routes/orderRoutes.js';
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
 // Connect DBs
