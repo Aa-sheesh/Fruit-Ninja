@@ -16,7 +16,7 @@ const OrderHistoryPage = () => {
     if (mobileNumber) {
       // Make API call to get orders by mobile number
       axios
-        .get(`https://fruit-ninja-7tju.onrender.com/${mobileNumber}`) // Ensure this endpoint is correct
+        .get(`https://fruit-ninja-7tju.onrender.com/api/orders/${mobileNumber}`) // Ensure this endpoint is correct
         .then((response) => {
           setOrderHistory(response.data); // Assuming the response is an array of orders
           setLoading(false);

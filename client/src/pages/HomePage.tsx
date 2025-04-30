@@ -10,7 +10,7 @@ const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    axios.get("https://fruit-ninja-7tju.onrender.com")
+    axios.get("https://fruit-ninja-7tju.onrender.com/menu")
       .then((res) => setProducts(res.data))
       .catch((err) => console.error("Failed to fetch products", err));
   }, []);
