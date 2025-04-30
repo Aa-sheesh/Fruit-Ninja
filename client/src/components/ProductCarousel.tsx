@@ -50,7 +50,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products, title }) =>
         >
           {products.map((product) => (
             <ProductCard 
-              key={product.id} 
+              key={product._id} 
               product={product} 
               variant="carousel"
             />

@@ -15,12 +15,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   variant = "default"
 }) => {
   const { addToCart, findCartItem, updateQuantity } = useCart();
-  const cartItem = findCartItem(product.id);
+  const cartItem = findCartItem(product._id);
   const quantity = cartItem ? cartItem.quantity : 0;
 
   const handleQuantityChange = (newQuantity: number) => {
     if (cartItem) {
-      updateQuantity(product.id, newQuantity);
+      updateQuantity(product._id, newQuantity);
     } else if (newQuantity > 0) {
       addToCart({ ...product, quantity: newQuantity });
       toast.success(`${product.name} added to cart`);

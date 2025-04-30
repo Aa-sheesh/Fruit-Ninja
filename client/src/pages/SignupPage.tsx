@@ -6,6 +6,7 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { useUser } from "@/contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
+
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,6 +16,7 @@ const SignupPage = () => {
   const { setUserName, setUserMobile } = useUser();
   const navigate = useNavigate();
 
+  
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone.trim()) {
@@ -50,7 +52,7 @@ const SignupPage = () => {
     <div className="fruit-container py-8">
       <div className="max-w-md mx-auto">
         <div className="bg-white rounded-2xl p-8 shadow-sm border">
-          <h1 className="text-2xl font-mono text-center mb-6">Signup</h1>
+          <h1 className="text-2xl font-mono text-center mb-6">Signup/Login</h1>
 
           <form onSubmit={showOtp ? handleSubmit : handleVerify}>
             <div className="space-y-6">
@@ -106,6 +108,8 @@ const SignupPage = () => {
                   <Button 
                     type="submit"
                     className="w-full bg-fruit-pink hover:bg-pink-200 text-pink-800"
+                    disabled={otp.length !== 4}
+
                   >
                     Submit
                   </Button>

@@ -1,12 +1,20 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCarousel from "@/components/ProductCarousel";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/products";
+import { Product } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const HomePage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/menu")
+      .then((res) => setProducts(res.data))
+      .catch((err) => console.error("Failed to fetch products", err));
+  }, []);
+
   const bestSellers = products.slice(0, 6);
   const fruitBowls = products.filter((p) => p.category === "Fruit Bowls");
   const drinks = products.filter((p) => p.category === "Drinks");
@@ -31,8 +39,12 @@ const HomePage = () => {
           </div>
           <div className="md:w-1/2 flex justify-center">
             <div className="relative">
-              <div className="w-40 h-40 md:w-60 md:h-60 bg-fruit-pink rounded-full relative flex items-center justify-center">
-                <span className="text-7xl md:text-9xl">🍉</span>
+              <div className="w-40 h-40 md:w-60 md:h-60 rounded-full flex items-center justify-center shadow-lg drop-shadow-lg sm:hidden md:block"> 
+                <img
+                  src="src/assets/heroImg.png"
+                  alt="Fruit Bowl"
+                  className="w-full h-full object-cover md:rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -50,7 +62,7 @@ const HomePage = () => {
           <h3 className="text-xl font-mono mb-4">Fruit Bowls</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {fruitBowls.map((product) => (
-              <ProductCard key={product.id} product={product} variant="list" />
+              <ProductCard key={product._id} product={product} variant="list" />
             ))}
           </div>
         </div>
@@ -58,11 +70,7 @@ const HomePage = () => {
           <h3 className="text-xl font-mono mb-4">Drinks</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {drinks.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                variant="list"
-              />
+              <ProductCard key={product._id} product={product} variant="list" />
             ))}
           </div>
         </div>

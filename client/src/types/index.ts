@@ -1,6 +1,6 @@
 
 export interface Product {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   price: number;
@@ -12,8 +12,10 @@ export interface CartItem extends Product {
 }
 
 export interface Order {
-  id: string;
-  product: string;
-  date: string;
-  price: number;
+name: string;
+
+  createdAt: string;
+  totalPrice: number;
+  items: CartItem[];
+  id: string; // Assuming the order has an ID
 }
